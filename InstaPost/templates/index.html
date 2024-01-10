@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{% block body %}
+<form action="/" method="post">
+    <input placeholder="heading" type="text">
+    <input placeholder="paragraph" type="textarea">
+    <input type="submit">
+</form>
+<p>
+    {% for i in post %}
+<ul>
+    <li>{{i.heading}}</li>
+    <li>{{i.paragraph}}</li>
+</ul>
+{% endfor %}
+</p>
+{% endblock %}
+</body>
+</html>
