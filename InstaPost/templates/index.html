@@ -1,24 +1,20 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Post List</title>
 </head>
 <body>
-{% block body %}
-<form action="/" method="post">
-    <input placeholder="heading" type="text">
-    <input placeholder="paragraph" type="textarea">
-    <input type="submit">
-</form>
-<p>
-    {% for i in post %}
-<ul>
-    <li>{{i.heading}}</li>
-    <li>{{i.paragraph}}</li>
-</ul>
-{% endfor %}
-</p>
-{% endblock %}
+    <h1>Post List</h1>
+    <ul>
+        {% for post in post %}
+            <li>
+                <strong>{{ post.heading }}</strong><br>
+                {{ post.paragraph }}<br>
+                <small>{{ post.pubdate }}</small>
+                (<a href="{% url 'generate_post_image' post.id %}">Generate Post Image</a>)
+            </li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'create_post' %}">Create a new post</a>
 </body>
 </html>
